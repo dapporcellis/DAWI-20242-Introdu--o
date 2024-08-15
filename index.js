@@ -19,4 +19,23 @@ app.get('/:nome/:sobrenome',function(req,res){
     res.send(mensagem)
 })
 
+// Essa rota recebe dois valores e a operação e da a resposta em tela.
+app.get('/:calc/:n1/:n2',function(req,res){
+    let calc;
+    if(req.params.calc =="soma"){
+        calc = parseFloat(req.params.n1)+parseFloat(req.params.n2);
+    }else if(req.params.calc =="mult"){
+        calc = parseFloat(req.params.n1)*parseFloat(req.params.n2);
+    }else if(req.params.calc =="div"){
+        calc = parseFloat(req.params.n1)/parseFloat(req.params.n2);
+    }else if(req.params.calc =="subt"){
+        calc = parseFloat(req.params.n1)-parseFloat(req.params.n2);
+    }else{
+        res.send("Essa operação não pode ser executada")
+    }
+    res.send("O resultado é "+calc)
+                            
+})
+
+
 app.listen(3000);
