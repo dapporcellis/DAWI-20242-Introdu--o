@@ -14,7 +14,22 @@ app.get('/',function (req,res){
 })
 
 app.post('/',function (req,res){
-    
+    let resultado;
+    const val1 = parseFloat(req.body.val1);
+    const val2 = parseFloat(req.body.val2);
+    //const op = req.body.operacao;
+    if(req.body.operacao =="soma"){
+        resultado = val1+val2;
+    }else if(req.body.operacao=='subt'){
+        resultado = val1-val2;
+    }else if(req.body.operacao=='mult'){
+        resultado = val1*val2;
+    }else if(req.body.operacao=='divi'){
+        resultado = val1/val2;
+    }else{
+        res.send("Operação inválida")
+    }
+    res.send("O resultado da operação solicitada é: "+ resultado)
 })
 
 app.get('/Diego',function(req,res){
