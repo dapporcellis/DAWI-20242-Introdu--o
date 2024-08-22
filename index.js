@@ -14,7 +14,7 @@ app.get('/',function (req,res){
 })
 
 app.post('/',function (req,res){
-    res.send("Oi "+req.body.nome)
+    
 })
 
 app.get('/Diego',function(req,res){
