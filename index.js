@@ -1,8 +1,20 @@
 import express from 'express';
 const app = express();
 
+app.set('view engine', 'ejs');
+
+//configura a pasta views para outro local
+//app.set('views', path.join(__dirname, 'tela'));
+
+app.use(express.urlencoded({ extended:true }));
+
 app.get('/',function (req,res){
-    res.send("Oi mundo!");
+    //res.send("Oi mundo!");
+    res.render('tela1')
+})
+
+app.post('/',function (req,res){
+    res.send("Oi "+req.body.nome)
 })
 
 app.get('/Diego',function(req,res){
