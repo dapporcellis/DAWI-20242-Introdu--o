@@ -29,8 +29,27 @@ app.post('/',function (req,res){
     }else{
         res.send("Operação inválida")
     }
-    res.send("O resultado da operação solicitada é: "+ resultado)
+    //res.send("O resultado da operação solicitada é: "+ resultado)
+    res.render('resposta.ejs',{Valor:resultado,Operacao:req.body.operacao})
 })
+
+app.get('/rifa', function(req, res){
+    res.render('configurarifa')
+})
+
+app.post('/rifa', function(req, res){
+    const inicio = parseInt(req.body.inicio)
+    const fim = parseInt(req.body.fim)
+    const mensagem = req.body.mensagem
+
+    if(inicio>=fim){
+        res.send("Quantidade de rifas inválidas, tente novamente.")
+    }
+
+    res.render('rifa',{inicio:inicio,fim:fim,mensagem:mensagem})
+})
+
+
 
 app.get('/Diego',function(req,res){
     res.send("Diego!");
